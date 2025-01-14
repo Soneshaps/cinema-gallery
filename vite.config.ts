@@ -11,6 +11,7 @@ export default defineConfig({
     alias: {
       '@': '/src',
       '@components': '/src/components',
+      '@types': '/src/types',
     },
   },
 })

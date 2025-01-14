@@ -1,6 +1,8 @@
-import { Box, Button, ButtonProps, Paper, styled, Typography } from '@mui/material'
-import YouTubeIcon from '@mui/icons-material/YouTube'
 import SearchIcon from '@mui/icons-material/Search'
+import YouTubeIcon from '@mui/icons-material/YouTube'
+import { Box, Button, ButtonProps, Paper, styled, Typography } from '@mui/material'
+
+import { GalleryCardProps } from '@/types'
 
 const YouTubeButton = styled(Button)<ButtonProps>(() => ({
   backgroundColor: '#FF0000',
@@ -14,14 +16,6 @@ const TorrentButton = styled(Button)<ButtonProps>(() => ({
   borderColor: '#6ac045',
   color: '#6ac045',
 }))
-
-export interface GalleryCardProps {
-  title: string
-  rating: number
-  releaseDate: number
-  genre: string[]
-  descriptions: string
-}
 
 const GalleryCard = (props: GalleryCardProps) => {
   const { title, rating, releaseDate, genre, descriptions } = props

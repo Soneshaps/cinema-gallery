@@ -1,10 +1,8 @@
-import GalleryCard, { GalleryCardProps } from '@components/GalleryCard/GalleryCard'
 import { Box } from '@mui/material'
 
-interface TrendingGalleryProps {
-  galleryTitle: string
-  galleryData: GalleryCardProps[]
-}
+import { TrendingGalleryProps } from '@/types'
+import GalleryCard from '@components/GalleryCard/GalleryCard'
+
 const TrendingGallery = (props: TrendingGalleryProps) => {
   const { galleryData, galleryTitle } = props
 
