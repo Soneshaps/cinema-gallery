@@ -2,6 +2,10 @@
 
 A simple web application that displays list of Top trending Movies and TV-Series
 
+## Demo
+
+You can view the live project here: [Project Link](https://trending-cinema-gallery.netlify.app/)
+
 ## Features
 
 - Display gallery cards with dynamic data.
@@ -11,7 +15,6 @@ A simple web application that displays list of Top trending Movies and TV-Series
 
 - React (Frontend)
 - Material-UI (UI Components)
-- JSON-based dummy data for testing
 
 ---
 
@@ -42,10 +45,17 @@ Ensure you have the following installed on your system:
 cd gallery-card-app
 ```
 
-3. **Install Dependencies** Install the required npm packages:
+3. **Add env variable**
+
+   ```
+    VITE_TMDB_URL=https://api.themoviedb.org/3
+    VITE_TMDB_API_KEY=
+   ```
+
+4. **Install Dependencies** Install the required npm packages:
 
 `npm install`
 
-3. **Start the application**
+5. **Start the application**
 
 `npm run dev`
