@@ -2,11 +2,11 @@ import SearchIcon from '@mui/icons-material/Search'
 import YouTubeIcon from '@mui/icons-material/YouTube'
 import { Box, Button, ButtonProps, Paper, styled, Typography } from '@mui/material'
 
-import { GalleryCardProps } from '@/types'
 import DescriptionArea from '@components/common/DescriptionArea'
 import GenreList from '@components/common/GenreList'
 import DateArea from '@components/common/DateArea'
 import Rating from '@components/common/Rating'
+import { NormalizedContent } from '@/types'
 
 const YouTubeButton = styled(Button)<ButtonProps>(() => ({
   backgroundColor: '#FF0000',
@@ -21,8 +21,8 @@ const TorrentButton = styled(Button)<ButtonProps>(() => ({
   color: '#6ac045',
 }))
 
-const GalleryCard = (props: GalleryCardProps) => {
-  const { title, rating, releaseDate, genre, descriptions } = props
+const GalleryCard = (props: NormalizedContent) => {
+  const { title, rating, releaseDate, genreNames, overview: descriptions, posterPath: imgUrl } = props
 
   return (
     <Paper
@@ -36,11 +36,7 @@ const GalleryCard = (props: GalleryCardProps) => {
       variant="elevation"
       elevation={3}
     >
-      <img
-        src="https://hips.hearstapps.com/hmg-prod/images/paul-mescal-pedro-pascal-gladiator-2-668bc8fe2ac78.jpg"
-        alt="example"
-        className="w-full h-4/5 sm:h-full lg:w-4/5 rounded-[5px] absolute top-0 right-0"
-      />
+      <img src={imgUrl} alt={title} className="w-full h-4/5 sm:h-full md:w-1/2 rounded-[5px] absolute top-0 right-0" />
       <Box
         sx={{
           width: '100%',
@@ -64,7 +60,7 @@ const GalleryCard = (props: GalleryCardProps) => {
         <Box sx={{ display: 'flex', marginTop: '16px' }}>
           <DateArea date={releaseDate} />
           <Box sx={{ padding: ' 8px', marginLeft: '16px' }}>
-            <GenreList genres={genre} />
+            <GenreList genres={genreNames} />
           </Box>
         </Box>
 

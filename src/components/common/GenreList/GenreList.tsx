@@ -7,8 +7,14 @@ interface GenreListProps {
 const GenreList = (props: GenreListProps) => {
   return (
     <Typography sx={{ color: '#67686a' }} variant="body2">
-      {props.genres.map((genre) => {
-        return <li className="genre-list">{genre}</li>
+      {props.genres.map((genre, index) => {
+        return (
+          genre && (
+            <li key={index} className="genre-list">
+              {genre}
+            </li>
+          )
+        )
       })}
     </Typography>
   )
