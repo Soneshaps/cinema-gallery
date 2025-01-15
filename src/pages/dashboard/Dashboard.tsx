@@ -1,4 +1,5 @@
 import TrendingGallery from '@/components/TrendingGallery/TrendingGallery'
+import { Box } from '@mui/material'
 
 const MockMoviesData = [
   {
@@ -26,11 +27,14 @@ const MockMoviesData = [
 
 const Dashboard = () => {
   return (
-    <div className="flex gap-8">
+    <Box
+      sx={{ display: 'flex', gap: 8, flexDirection: { xs: 'flex-col', lg: 'flex-row' } }}
+      className="flex max-lg:flex-col gap-8"
+    >
       <TrendingGallery galleryTitle="Trending Movies" galleryData={MockMoviesData} />
 
-      <TrendingGallery galleryTitle="Trending Movies" galleryData={MockMoviesData} />
-    </div>
+      <TrendingGallery galleryTitle="Trending Series" galleryData={MockMoviesData} />
+    </Box>
   )
 }
 
