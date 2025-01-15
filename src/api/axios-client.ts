@@ -1,8 +1,11 @@
 import axios from 'axios'
 
+const baseUrl = import.meta.env.VITE_TMDB_URL
+const token = import.meta.env.VITE_TMDB_API_KEY
+
 export const tmdbApi = axios.create({
-  baseURL: 'https://api.themoviedb.org/3',
+  baseURL: baseUrl || 'https://api.themoviedb.org/3',
   headers: {
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MWMxMmUwNjliOTA0MTg2NDFkODI0MzQ2NDAwMTNiNyIsIm5iZiI6MTczNjg3OTgyNC4wNzgsInN1YiI6IjY3ODZhZWQwOTRmYzg3ZWY0ODdiNzI4YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wP1GGW3jDRePrPenqatzDRoc_FFtlzjWBdgoRXVIqf8`,
+    Authorization: `Bearer ${token}`,
   },
 })
