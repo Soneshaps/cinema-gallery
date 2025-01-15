@@ -1,10 +1,10 @@
 import { Genre, MovieResponse, NormalizedContent, TVResponse } from './types'
 
-export const normalizeContent = (
+export function normalizeContent(
   content: MovieResponse | TVResponse,
   type: 'movie' | 'tv',
   genres: Genre[],
-): NormalizedContent => {
+): NormalizedContent {
   const genreMap = new Map(genres?.map((genre) => [genre.id, genre.name]))
   const genreNames = content.genre_ids.map((id) => genreMap.get(id) || '')
 
@@ -44,19 +44,31 @@ export const normalizeContent = (
 }
 
 // Helper function to normalize arrays of content
-export const normalizeContentArray = (
+export function normalizeContentArray(
   contents: (MovieResponse | TVResponse)[],
   type: 'movie' | 'tv',
   genres: Genre[],
-): NormalizedContent[] => {
+): NormalizedContent[] {
   return contents.map((content) => normalizeContent(content, type, genres))
 }
 
 // Image URL helper
-export const getImageUrl = (path: string, size: 'w200' | 'w500' | 'original' = 'w500'): string => {
+export function getImageUrl(path: string, size: 'w200' | 'w500' | 'original' = 'w500'): string {
   if (!path) {
     return ''
   }
 
   return `https://image.tmdb.org/t/p/${size}${path}`
+}
+
+export function openInNewWindow(url: string) {
+  window.open(url, '_blank', 'noopener,noreferrer')
+}
+
+export function getYouTubeSearchUrl(searchQuery: string) {
+  return `https://www.youtube.com/results?search_query=${encodeURIComponent(searchQuery)}+trailer`
+}
+
+export function getYtsSearchUrl(searchQuery: string) {
+  return `https://yts.mx/browse-movies/${encodeURIComponent(searchQuery)}`
 }

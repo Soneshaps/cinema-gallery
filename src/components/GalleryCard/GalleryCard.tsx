@@ -7,6 +7,7 @@ import GenreList from '@components/common/GenreList'
 import DateArea from '@components/common/DateArea'
 import Rating from '@components/common/Rating'
 import { NormalizedContent } from '@/types'
+import { getYouTubeSearchUrl, getYtsSearchUrl, openInNewWindow } from '@/utils'
 
 const YouTubeButton = styled(Button)<ButtonProps>(() => ({
   backgroundColor: '#FF0000',
@@ -69,12 +70,17 @@ const GalleryCard = (props: NormalizedContent) => {
         </Box>
 
         <Box sx={{ position: 'absolute', left: '16px', bottom: '16px', display: 'flex' }}>
-          <YouTubeButton variant="contained" startIcon={<YouTubeIcon />}>
+          <YouTubeButton
+            onClick={() => openInNewWindow(getYouTubeSearchUrl(title))}
+            variant="contained"
+            startIcon={<YouTubeIcon />}
+          >
             WATCH TRAILER
           </YouTubeButton>
 
           <TorrentButton
             sx={{ marginLeft: '20px', display: { xs: 'none', md: 'flex' } }}
+            onClick={() => openInNewWindow(getYtsSearchUrl(title))}
             variant="outlined"
             startIcon={<SearchIcon />}
           >
