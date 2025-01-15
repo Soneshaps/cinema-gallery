@@ -1,7 +1,7 @@
 export interface GalleryCardProps {
   title: string
   rating: number
-  releaseDate: number
+  releaseDate: string
   genre: string[]
   descriptions: string
 }

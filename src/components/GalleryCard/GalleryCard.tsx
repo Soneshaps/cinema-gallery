@@ -3,6 +3,10 @@ import YouTubeIcon from '@mui/icons-material/YouTube'
 import { Box, Button, ButtonProps, Paper, styled, Typography } from '@mui/material'
 
 import { GalleryCardProps } from '@/types'
+import DescriptionArea from '@components/common/DescriptionArea'
+import GenreList from '@components/common/GenreList'
+import DateArea from '@components/common/DateArea'
+import Rating from '@components/common/Rating'
 
 const YouTubeButton = styled(Button)<ButtonProps>(() => ({
   backgroundColor: '#FF0000',
@@ -55,32 +59,17 @@ const GalleryCard = (props: GalleryCardProps) => {
           {title}
         </Typography>
 
-        <Box>
-          <div className="rating">
-            {rating}
-            <span className="rating-total">/10</span>
-          </div>
-        </Box>
+        <Rating rating={rating} />
 
         <Box sx={{ display: 'flex', marginTop: '16px' }}>
-          <Typography
-            sx={{ color: 'white', border: '1px solid rgba(255,255,255,0.13)', padding: ' 8px' }}
-            variant="body1"
-          >
-            {releaseDate}
-          </Typography>
-
-          <Typography sx={{ color: '#67686a', padding: ' 8px', marginLeft: '16px' }} variant="body2">
-            {genre.map((genre) => {
-              return <li className="genre-list">{genre}</li>
-            })}
-          </Typography>
+          <DateArea date={releaseDate} />
+          <Box sx={{ padding: ' 8px', marginLeft: '16px' }}>
+            <GenreList genres={genre} />
+          </Box>
         </Box>
 
         <Box sx={{ width: '55%', marginTop: '30px', maxHeight: '168px', overflow: 'hidden' }}>
-          <Typography sx={{ color: '#ffffff' }} variant="body1">
-            {descriptions}
-          </Typography>
+          <DescriptionArea description={descriptions} />
         </Box>
 
         <Box sx={{ position: 'absolute', left: '16px', bottom: '16px', display: 'flex' }}>
