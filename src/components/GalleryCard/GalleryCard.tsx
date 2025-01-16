@@ -1,6 +1,6 @@
 import SearchIcon from '@mui/icons-material/Search'
 import YouTubeIcon from '@mui/icons-material/YouTube'
-import { Box, Button, ButtonProps, Paper, styled, Typography } from '@mui/material'
+import { Box, Button, ButtonProps, Paper, styled, Tooltip, Typography } from '@mui/material'
 
 import DescriptionArea from '@components/common/DescriptionArea'
 import GenreList from '@components/common/GenreList'
@@ -29,15 +29,21 @@ const GalleryCard = (props: NormalizedContent) => {
     <Paper
       className="paper-hover"
       sx={{
-        height: { xs: '400px', md: '600px', lg: '400px' },
+        height: '400px',
         transition: 'transform 0.3s ease',
         backgroundColor: 'black',
         position: 'relative',
+        borderRadius: '12px',
+        overflow: 'hidden',
       }}
       variant="elevation"
       elevation={3}
     >
-      <img src={imgUrl} alt={title} className="w-full h-4/5 sm:h-full md:w-1/2 rounded-[5px] absolute top-0 right-0" />
+      <img
+        src={imgUrl}
+        alt={title}
+        className="w-full h-4/5 sm:h-full md:w-1/2 object-cover rounded-[5px] absolute top-0 right-0"
+      />
       <Box
         sx={{
           width: '100%',
@@ -45,14 +51,17 @@ const GalleryCard = (props: NormalizedContent) => {
           position: 'relative',
           background: {
             md: 'linear-gradient(to right, #0d0d0c 50%, transparent 100%)',
-            xs: 'linear-gradient(to top, #0d0d0c 40%, transparent 100%)',
+            xs: 'linear-gradient(to top, #0d0d0c 60%, transparent 100%)',
           },
           backgroundBlendMode: 'multiply',
           borderRadius: '5px',
           padding: '16px',
         }}
       >
-        <Typography sx={{ color: 'white' }} variant="h4">
+        <Typography
+          sx={{ color: 'white', fontSize: '25px', fontWeight: 500, textTransform: 'capitalize' }}
+          variant="h4"
+        >
           {title}
         </Typography>
 
@@ -65,7 +74,7 @@ const GalleryCard = (props: NormalizedContent) => {
           </Box>
         </Box>
 
-        <Box sx={{ width: '55%', marginTop: '30px', maxHeight: '168px', overflow: 'hidden' }}>
+        <Box sx={{ width: { xs: '80%', md: '55%' }, marginTop: '30px', overflow: 'hidden' }}>
           <DescriptionArea description={descriptions} />
         </Box>
 
@@ -78,14 +87,16 @@ const GalleryCard = (props: NormalizedContent) => {
             WATCH TRAILER
           </YouTubeButton>
 
-          <TorrentButton
-            sx={{ marginLeft: '20px', display: { xs: 'none', md: 'flex' } }}
-            onClick={() => openInNewWindow(getYtsSearchUrl(title))}
-            variant="outlined"
-            startIcon={<SearchIcon />}
-          >
-            SEARCH TORRENT
-          </TorrentButton>
+          <Tooltip title="Search in YTS" arrow>
+            <TorrentButton
+              sx={{ marginLeft: '20px', display: { xs: 'none', md: 'flex' } }}
+              onClick={() => openInNewWindow(getYtsSearchUrl(title))}
+              variant="outlined"
+              startIcon={<SearchIcon />}
+            >
+              SEARCH TORRENT
+            </TorrentButton>
+          </Tooltip>
         </Box>
       </Box>
     </Paper>

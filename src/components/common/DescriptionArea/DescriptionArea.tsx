@@ -7,7 +7,7 @@ const DescriptionArea = (props: DescriptionAreaProps) => {
   return (
     <Typography
       sx={{
-        color: '#ffffff',
+        color: '#d7d7d7',
         display: '-webkit-box',
         WebkitLineClamp: 6, // Number of lines
         WebkitBoxOrient: 'vertical',

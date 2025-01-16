@@ -8,8 +8,8 @@ const TrendingGallery = (props: TrendingGalleryProps) => {
 
   return (
     <div className="flex-1">
-      <div className="text-4xl text-center mb-12">{galleryTitle}</div>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+      <div className="text-title-4 text-center mb-8">{galleryTitle}</div>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, borderRadius: '12px', paddingX: '10px' }}>
         {galleryData.map((data) => {
           return <GalleryCard key={data.id} {...data} />
         })}

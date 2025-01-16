@@ -18,13 +18,10 @@ const Dashboard = () => {
   }
 
   return (
-    <Box
-      sx={{ display: 'flex', gap: 8, flexDirection: { xs: 'flex-col', lg: 'flex-row' } }}
-      className="flex max-lg:flex-col gap-8"
-    >
+    <div className="flex flex-col md:flex-row gap-8">
       <TrendingGalleryWrapper type="movie" data={moviesData!} sectionTitle={'Trending Movies'} genreData={genreData!} />
       <TrendingGalleryWrapper type="tv" data={tvShowsData!} sectionTitle={'Trending TV Shows'} genreData={genreData!} />
-    </Box>
+    </div>
   )
 }
 
