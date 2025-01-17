@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 
 import { TrendingGalleryProps } from '@/types'
-import GalleryCard from '@components/GalleryCard/GalleryCard'
+import GalleryCardWrapper from '@components/GalleryCard/GalleryCardWrapper'
 
 const TrendingGallery = (props: TrendingGalleryProps) => {
   const { galleryData, galleryTitle } = props
@@ -11,7 +11,7 @@ const TrendingGallery = (props: TrendingGalleryProps) => {
       <div className="text-title-4 text-center mb-8">{galleryTitle}</div>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, borderRadius: '12px', paddingX: '10px' }}>
         {galleryData.map((data) => {
-          return <GalleryCard key={data.id} {...data} />
+          return <GalleryCardWrapper key={data.id} {...data} />
         })}
       </Box>
     </div>

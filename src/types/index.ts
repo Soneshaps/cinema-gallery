@@ -61,6 +61,7 @@ export interface NormalizedContent {
   genreIds: number[]
   genreNames: string[]
   mediaType: 'movie' | 'tv'
+  imdb_title?: string
 }
 
 export interface Genre {
@@ -71,4 +72,9 @@ export interface Genre {
 export interface TrendingGalleryProps {
   galleryTitle: string
   galleryData: NormalizedContent[]
+}
+
+export interface ExternalDetails {
+  id: number
+  imdb_id: string
 }

@@ -1,13 +1,13 @@
 import SearchIcon from '@mui/icons-material/Search'
 import YouTubeIcon from '@mui/icons-material/YouTube'
-import { Box, Button, ButtonProps, Paper, styled, Tooltip, Typography } from '@mui/material'
+import { Box, Button, ButtonProps, Link, LinkProps, Paper, styled, Tooltip } from '@mui/material'
 
 import DescriptionArea from '@components/common/DescriptionArea'
 import GenreList from '@components/common/GenreList'
 import DateArea from '@components/common/DateArea'
 import Rating from '@components/common/Rating'
 import { NormalizedContent } from '@/types'
-import { getYouTubeSearchUrl, getYtsSearchUrl, openInNewWindow } from '@/utils'
+import { getYouTubeSearchUrl, getYtsSearchUrl, openInImdb, openInNewWindow } from '@/utils'
 
 const YouTubeButton = styled(Button)<ButtonProps>(() => ({
   backgroundColor: '#FF0000',
@@ -20,6 +20,17 @@ const YouTubeButton = styled(Button)<ButtonProps>(() => ({
 const TorrentButton = styled(Button)<ButtonProps>(() => ({
   borderColor: '#6ac045',
   color: '#6ac045',
+}))
+
+const CardTitle = styled(Link)<LinkProps>(() => ({
+  color: 'white',
+  fontSize: '25px',
+  fontWeight: 500,
+  textTransform: 'capitalize',
+  cursor: 'pointer',
+  '&:hover': {
+    color: '#D22B2B',
+  },
 }))
 
 const GalleryCard = (props: NormalizedContent) => {
@@ -58,12 +69,15 @@ const GalleryCard = (props: NormalizedContent) => {
           padding: '16px',
         }}
       >
-        <Typography
-          sx={{ color: 'white', fontSize: '25px', fontWeight: 500, textTransform: 'capitalize' }}
+        <CardTitle
+          target="_blank"
+          underline="none"
+          href={openInImdb(props?.imdb_title)}
           variant="h4"
+          title="Open in Imdb"
         >
           {title}
-        </Typography>
+        </CardTitle>
 
         <Rating rating={rating} />
 

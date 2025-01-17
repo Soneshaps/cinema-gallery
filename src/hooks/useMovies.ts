@@ -1,10 +1,11 @@
-import { useQuery } from '@tanstack/react-query'
 import { tmdbApi } from '@/api/axios-client'
-import { Genre, MovieResponse, TmdbResponse, TVResponse } from '@/types'
+import { useQuery } from '@tanstack/react-query'
+import { ExternalDetails, Genre, MovieResponse, TmdbResponse, TVResponse } from '@/types'
+
+/* eslint-disable react-hooks/rules-of-hooks */
 
 export const useMovies = () => {
   const getTrendingMovies = (page: number = 1) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     return useQuery({
       queryKey: ['popularMovies', page],
       queryFn: async () => {
@@ -18,7 +19,6 @@ export const useMovies = () => {
   }
 
   const getTrendingTVShows = (page: number = 1) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     return useQuery({
       queryKey: ['popularTvShows', page],
       queryFn: async () => {
@@ -32,7 +32,6 @@ export const useMovies = () => {
   }
 
   const getGenreDetails = (page: number = 1) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     return useQuery({
       queryKey: ['genreList', page],
       queryFn: async () => {
@@ -45,19 +44,21 @@ export const useMovies = () => {
     })
   }
 
-  // Helper function to construct image URLs
-  const getImageUrl = (path: string | null, size: 'w500' | 'original' = 'w500') => {
-    if (!path) {
-      return ''
-    }
+  const getImdbDetails = (type: 'movie' | 'tv', id: number) => {
+    return useQuery({
+      queryKey: ['imdbDetails', id],
+      queryFn: async () => {
+        const { data } = await tmdbApi.get<ExternalDetails>(`${type}/${id}/external_ids`)
 
-    return `https://image.tmdb.org/t/p/${size}${path}`
+        return data
+      },
+    })
   }
 
   return {
     getTrendingMovies,
     getTrendingTVShows,
     getGenreDetails,
-    getImageUrl,
+    getImdbDetails,
   }
 }

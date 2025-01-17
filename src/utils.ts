@@ -69,6 +69,10 @@ export function getYouTubeSearchUrl(searchQuery: string) {
   return `https://www.youtube.com/results?search_query=${encodeURIComponent(searchQuery)}+trailer`
 }
 
+export function openInImdb(searchQuery?: string) {
+  return `https://www.imdb.com/title/${searchQuery}/`
+}
+
 export function getYtsSearchUrl(searchQuery: string) {
   return `https://yts.mx/browse-movies/${encodeURIComponent(searchQuery)}`
 }
